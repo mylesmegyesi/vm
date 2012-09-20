@@ -75,6 +75,7 @@ endfunction
 
 command! -nargs=0 Trim :call Trim()
 nnoremap <silent> <Leader>tw :Trim<CR>
+nnoremap <silent> <Leader>cf :CommandTFlush<CR>
 
 let vimclojure#HighlightBuiltins=0
 let vimclojure#ParenRainbow=1
