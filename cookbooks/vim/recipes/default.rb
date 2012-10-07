@@ -41,12 +41,6 @@ git "#{bundle_dir}/vim-ruby" do
   action :sync
 end
 
-git "#{bundle_dir}/vim-ruby" do
-  repository 'https://github.com/vim-ruby/vim-ruby.git'
-  reference 'master'
-  action :sync
-end
-
 git "#{bundle_dir}/nerdtree" do
   repository 'https://github.com/scrooloose/nerdtree.git'
   reference 'master'
@@ -67,6 +61,12 @@ end
 
 git "#{bundle_dir}/mustache.vim" do
   repository 'https://github.com/juvenn/mustache.vim.git'
+  reference 'master'
+  action :sync
+end
+
+git "#{bundle_dir}/jst.vim" do
+  repository 'https://github.com/briancollins/vim-jst.git'
   reference 'master'
   action :sync
 end
