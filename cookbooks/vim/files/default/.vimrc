@@ -52,20 +52,6 @@ if &t_Co == 256
   colorscheme Tomorrow-Night
 endif
 
-" Keymaps
-
-nmap , \
-map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
-map <silent> <LocalLeader>nr :NERDTree<CR>
-map <silent> <LocalLeader>nf :NERDTreeFind<CR>
-map <silent> <LocalLeader>nh :nohls<CR>
-map <silent> <LocalLeader>t :CommandT<CR>
-map <silent> <LocalLeader>cf :CommandTFlush<CR>
-map <silent> <LocalLeader>cb :CommandTBuffer<CR>
-map <silent> <LocalLeader>cj :CommandTJump<CR>
-map <silent> <LocalLeader>ct :CommandTTag<CR>
-imap <C-L> <SPACE>=><SPACE>
-
 function! Trim()
   exe "normal mz"
   %s/\s*$//
@@ -73,9 +59,21 @@ function! Trim()
   exe "normal zz"
 endfunction
 
-command! -nargs=0 Trim :call Trim()
-nnoremap <silent> <Leader>cw :Trim<CR>
-nnoremap <silent> <Leader>cf :CommandTFlush<CR>
+" Keymaps
+
+nmap , \                                        
+command! -nargs=0 Trim :call Trim()             
+nnoremap <silent> <Leader>cw :Trim<CR>          
+nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>nr :NERDTree<CR>      
+nnoremap <silent> <Leader>nf :NERDTreeFind<CR>  
+nnoremap <silent> <Leader>nh :nohls<CR>         
+nnoremap <silent> <Leader>t :CommandT<CR>       
+nnoremap <silent> <Leader>cf :CommandTFlush<CR> 
+nnoremap <silent> <Leader>cb :CommandTBuffer<CR>
+nnoremap <silent> <Leader>cj :CommandTJump<CR>  
+nnoremap <silent> <Leader>ct :CommandTTag<CR>   
+imap <C-L> <SPACE>=><SPACE>                     
 
 let vimclojure#HighlightBuiltins=0
 let vimclojure#ParenRainbow=1
