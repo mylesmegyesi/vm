@@ -8,7 +8,6 @@ end
 
 user_bash 'download RVM install script' do
   code 'curl -L get.rvm.io | bash -s stable'
-  returns 1
 end
 
 user_cookbook_file '.gemrc'
