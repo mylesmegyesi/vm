@@ -21,6 +21,8 @@ zsh_file 'zsh-syntax-highlighting'
 
 zsh_file 'prompt'
 
+zsh_file 'aliases'
+
 user_cookbook_file '.zshrc'
 
 bash 'make ZSH the default login shell' do
