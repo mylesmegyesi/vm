@@ -5,6 +5,8 @@ This is the VM that I use for development. It uses [Vagrant](http://vagrantup.co
 ### The short version
 
 ```bash
+git clone git@github.com:mylesmegyesi/vm.git
+cd vm
 ssh-add ~/.ssh/id_rsa
 cp definitions/development-vm/definition.rb.example definitions/development-vm/definition.rb
 bundle install
@@ -12,6 +14,13 @@ rake install
 ```
 
 ### The details
+
+#### Clone the repo
+
+```bash
+git clone git@github.com:mylesmegyesi/vm.git
+cd vm
+```
 
 #### Add your ssh keys
 
@@ -49,7 +58,7 @@ rake install
 
 ## Usage
 
-Every command is a rake task. To see all available commands, type `rake -T`.
+Every command is a rake task. To see them all, type `rake -T` or checkout the `Rakefile`.
 
   * `install`: Installs the Base Box and VM for the first time.
   * `reset`: Resets the Base Box and VM.
