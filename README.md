@@ -68,7 +68,7 @@ Every command is a rake task. To see them all, type `rake -T` or checkout the `R
 
 ## Gotchas
 
-### Internet Connectivity Issues
+### Internet Connectivity
 
 If your host machine has lost internet and subsequently reconnected, you will have to manually tell you VM to reconnect.
 
@@ -77,3 +77,9 @@ Run this inside the VM.
 ```bash
 sudo dhclient
 ```
+
+## Issues
+
+Post issues on the github project:
+
+* [https://github.com/mylesmegyesi/vm/issues](https://github.com/mylesmegyesi/vm/issues)
