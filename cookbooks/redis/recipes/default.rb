@@ -1,6 +1,4 @@
-package 'redis-server' do
-  version '2:2.2.12-1build1'
-end
+package 'redis-server'
 
 user 'redis' do
   home '/var/lib/redis'

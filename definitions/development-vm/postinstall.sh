@@ -27,12 +27,12 @@ apt-get -y install nfs-common
 apt-get -y update
 apt-get -y upgrade
 apt-get -y install linux-headers-$(uname -r) build-essential
-apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev
-apt-get -y install ruby rubygems
+apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev irb1.9.1 ri1.9.1 rdoc1.9.1 libopenssl-ruby1.9.1
+apt-get -y install ruby1.9.1 ruby1.9.1-dev rubygems1.9.1
 apt-get clean
 
-# Installing chef & Puppet
-gem install chef --no-ri --no-rdoc
+# Installing chef
+gem install chef --version 10.16.2 --no-ri --no-rdoc
 
 # Installing vagrant keys
 mkdir /home/vagrant/.ssh

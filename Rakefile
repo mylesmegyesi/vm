@@ -7,25 +7,30 @@ task :reset => ['box:reset', 'vm:reset']
 
 namespace :box do
 
+  name = 'development-vm'
+
   task :reset => [:remove, :create]
 
   task :create => [:build, :export,  :add]
 
   task :build do
-    sh 'veewee vbox build development-vm --force'
+    sh "veewee vbox build #{name} --force"
   end
 
   task :export do
-    sh 'vagrant package --base development-vm --output development-vm.box'
+    sh "vagrant package --base #{name} --output #{name}.box"
   end
 
   task :add do
-    sh 'vagrant box add development-vm development-vm.box'
+    sh "vagrant box add #{name} #{name}.box"
   end
 
   task :remove do
-    sh 'rm development-vm.box'
-    sh 'vagrant box remove development-vm'
+    path = File.expand_path("../#{name}.box", __FILE__)
+    if File.exists?(path)
+      sh "rm #{name}.box"
+      sh "vagrant box remove #{name}"
+    end
   end
 end
 
@@ -48,7 +53,15 @@ namespace :vm do
 
   desc 'Kill the VM'
   task :kill do
-    sh "VBoxManage controlvm #{ENV['VM']} poweroff"
+    require 'json'
+    vm_config = nil
+    vagrant_config_path = File.expand_path('../.vagrant', __FILE__)
+    vm_config = JSON.parse(IO.read(vagrant_config_path)) if File.exists?(vagrant_config_path)
+    if vm_config && vm_config.has_key?('active') && vm_config['active'].has_key?('default')
+      sh "VBoxManage controlvm #{vm_config['active']['default']} poweroff"
+    else
+      p 'No active VM found'
+    end
   end
 
   desc 'List all running VMs'
