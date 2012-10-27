@@ -1,32 +1,68 @@
+This is the VM that I use for development. It uses [Vagrant](http://vagrantup.com) and [Veewee](https://github.com/jedi4ever/veewee). Much of the terminology in this readme comes from these projects.
+
 ## Installation
 
-### Add your ssh keys
+### The short version
 
-  `ssh-add ~/.ssh/id_rsa`
+```bash
+ssh-add ~/.ssh/id_rsa
+cp definitions/development-vm/definition.rb.example definitions/development-vm/definition.rb
+bundle install
+rake install
+```
 
-### Define your Base Box
+### The details
 
-  `cp definitions/development-vm/definition.rb.example definitions/development-vm/definition.rb`
+#### Add your ssh keys
 
-#### Default settings
+```bash
+ssh-add ~/.ssh/id_rsa
+```
+
+#### Define your Base Box
+
+```bash
+cp definitions/development-vm/definition.rb.example definitions/development-vm/definition.rb
+```
+
+#### Customize the Base Box
+
+All the settings for the Base Box are found in `definitions/development-vm/definition.rb`. These are the defaults:
 
   * Memory: 8gb - _If you do not have more than 8gb of RAM, decrease this number._
   * Hard Drive: 20gb
   * CPU Count: 4 - _If you do not have 4 cores, decrease this number._
 
-   Modify the settings to suit your needs.
+Modify the settings to suit your needs.
 
-### One line install (first time)
+#### Install Vagrant
 
-  `rake install`
+```bash
+bundle install
+```
 
-### Reset the VM (after first time)
+#### Install the VM
 
-  `rake reset`
+```bash
+rake install
+```
 
-### After the box is set up and you modify chef recipies
+## Usage
 
-  `rake vm:provision`
+Every command is a rake task. To see all available commands, type `rake -T`.
 
-#### Other Gotchas
-   `sudo dhclient` if your vm cannot connect to the internet
+  * `install`: Installs the Base Box and VM for the first time.
+  * `reset`: Resets the Base Box and VM.
+  * `vm:down`: Gracefully shuts down the VM
+  * `vm:kill`: If the VM will not gracefully shutdown for some reason, this will kill it.
+  * `vm:open`: Start the VM and SSH into it.
+
+## Gotchas
+
+If your host machine has lost internet and subsequently reconnected, you will have to manually tell you VM to reconnect.
+
+Run this inside the VM.
+
+```bash
+sudo dhclient
+```
