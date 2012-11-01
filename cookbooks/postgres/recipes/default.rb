@@ -1,4 +1,6 @@
-package 'postgresql-9.1'
+['postgresql-9.1',  'libpq-dev'].each do |p|
+  package p
+end
 
 # turn on trust authentication
 hba_conf = '/etc/postgresql/9.1/main/pg_hba.conf'
@@ -17,7 +19,7 @@ end
 
 bash 'create new role' do
   user 'postgres'
-  code "createuser -s #{Helper.user}"
+  code "createuser -s #{ENV['USER']}"
   returns [0, 1]
 end
 
