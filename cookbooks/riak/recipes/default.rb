@@ -4,6 +4,11 @@ riak_package = 'riak_1.1.4-1_amd64.deb'
 riak_url = "http://downloads.basho.com/riak/CURRENT/#{riak_package}"
 riak_deb = Helper.home(riak_package)
 
+user 'riak' do
+  system true
+  group 'admin'
+end
+
 cookbook_file '/etc/riak/app.config' do
   owner 'riak'
 end
