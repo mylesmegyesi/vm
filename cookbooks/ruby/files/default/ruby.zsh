@@ -2,6 +2,7 @@
 
 alias be="bundle exec"
 alias bi="bundle install"
+alias b="bundle install"
 alias bu="bundle update"
 alias rtest='ruby -I"lib:test"'
 alias bxr="bundle exec rspec"
