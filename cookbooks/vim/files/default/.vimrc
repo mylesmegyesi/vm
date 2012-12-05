@@ -73,6 +73,7 @@ nnoremap <silent> <Leader>cf :CommandTFlush<CR>
 nnoremap <silent> <Leader>cb :CommandTBuffer<CR>
 nnoremap <silent> <Leader>cj :CommandTJump<CR>  
 nnoremap <silent> <Leader>ct :CommandTTag<CR>   
+noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 imap <C-L> <SPACE>=><SPACE>                     
 
 let vimclojure#HighlightBuiltins=0
