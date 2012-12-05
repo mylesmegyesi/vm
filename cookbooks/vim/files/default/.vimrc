@@ -75,6 +75,10 @@ nnoremap <silent> <Leader>cj :CommandTJump<CR>
 nnoremap <silent> <Leader>ct :CommandTTag<CR>   
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 imap <C-L> <SPACE>=><SPACE>                     
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 
 let vimclojure#HighlightBuiltins=0
 let vimclojure#ParenRainbow=1
