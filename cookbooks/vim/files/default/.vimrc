@@ -23,7 +23,7 @@ set softtabstop=2
 set expandtab
 set ignorecase smartcase
 set cursorline
-set wrap
+set nowrap
 set noswapfile
 set bs=2
 set winwidth=90
