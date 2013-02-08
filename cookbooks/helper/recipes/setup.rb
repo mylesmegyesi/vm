@@ -1,4 +1,9 @@
 
+execute "apt-get-update" do
+  command "sudo apt-get update"
+  ignore_failure true
+end
+
 class ::Helper
   def self.home(path='')
     File.join("/home/#{user}", path)

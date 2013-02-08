@@ -9,7 +9,7 @@ user 'riak' do
   group 'admin'
 end
 
-cookbook_file '/etc/riak/app.config' do
+directory '/etc/riak' do
   owner 'riak'
 end
 
@@ -24,4 +24,8 @@ end
 
 user_file riak_deb do
   action :delete
+end
+
+cookbook_file '/etc/riak/app.config' do
+  owner 'riak'
 end
