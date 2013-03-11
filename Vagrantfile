@@ -4,6 +4,7 @@ Vagrant::Config.run do |config|
   config.vm.box = 'development-vm'
 
   config.vm.forward_port 8080, 8080
+  config.vm.forward_port 8081, 8081
   config.vm.forward_port 4000, 4000
 
   config.ssh.forward_agent = true
