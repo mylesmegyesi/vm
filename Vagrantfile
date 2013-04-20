@@ -28,6 +28,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe('coffee_script')
     chef.add_recipe('go')
     chef.add_recipe('haskell')
+    chef.add_recipe('erlang')
 
     # Datastores
     chef.add_recipe('redis')
