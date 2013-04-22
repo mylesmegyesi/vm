@@ -1,4 +1,4 @@
-['postgresql-9.1',  'libpq-dev'].each do |p|
+['postgresql-9.1',  'libpq-dev', 'postgresql-contrib'].each do |p|
   package p
 end
 

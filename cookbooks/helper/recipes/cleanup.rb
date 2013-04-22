@@ -4,6 +4,6 @@
   end
 end
 
-home_directory 'tmp' do
-  action :delete
-end
+#home_directory 'tmp' do
+#  action :delete
+#end
