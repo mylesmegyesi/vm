@@ -37,6 +37,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe('postgres')
     chef.add_recipe('mysql')
     chef.add_recipe('sqlite')
+    chef.add_recipe('rabbitmq')
 
     # Search Engines
     chef.add_recipe('elasticsearch')
