@@ -15,6 +15,7 @@ Vagrant.configure('2') do |config|
       override.vm.box   = 'ubuntu-13.10.amd64.vmware'
       v.vmx['memsize']  = '8192'
       v.vmx['numvcpus'] = '4'
+      v.name            = 'dev-vm'
     end
 
     dev_vm.librarian_chef.cheffile_dir = '.'
