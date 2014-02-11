@@ -1,7 +1,5 @@
 *.box
-iso/
+tmp
+packer_cache
 .vagrant
-cookbooks/git/files/default/.gitconfig
-definitions/development-vm/definition.rb
-*.swp
-*.DS_Store
+cookbooks

@@ -1,0 +1,48 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    ark (0.4.2)
+    build-essential (1.4.0)
+    chef_handler (1.1.4)
+    dmg (2.1.4)
+    git (2.6.0)
+      build-essential (>= 0.0.0)
+      dmg (>= 0.0.0)
+      runit (>= 1.0.0)
+      windows (>= 0.0.0)
+      yum (>= 0.0.0)
+    mysql (3.0.4)
+      build-essential (> 1.1.0)
+      openssl (>= 0.0.0)
+    openssl (1.1.0)
+    ruby_build (0.8.0)
+    runit (1.5.8)
+      build-essential (>= 0.0.0)
+      yum (~> 3.0)
+      yum-epel (>= 0.0.0)
+    tmux (1.3.2)
+    windows (1.12.8)
+      chef_handler (>= 0.0.0)
+    yum (3.0.6)
+    yum-epel (0.2.0)
+      yum (~> 3.0)
+    zsh (1.0.0)
+
+GIT
+  remote: https://github.com/mylesmegyesi/chef-chruby
+  ref: patch-1
+  sha: 4d32ae580d3029c6518c86522988a93e07be5294
+  specs:
+    chruby (0.2.1)
+      ark (>= 0.0.0)
+      ruby_build (>= 0.0.0)
+
+DEPENDENCIES
+  build-essential (= 1.4.0)
+  chruby (>= 0)
+  git (= 2.6.0)
+  mysql (= 3.0.4)
+  ruby_build (= 0.8.0)
+  tmux (= 1.3.2)
+  zsh (= 1.0.0)
+

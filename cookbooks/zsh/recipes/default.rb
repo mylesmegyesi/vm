@@ -1,30 +1,33 @@
-package 'zsh'
+#
+# Cookbook Name:: zsh
+# Recipe:: default
+#
+# Copyright 2008-2009, Opscode, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-home_directory '.bin'
-
-user_remote_file Helper.home('.bin/vcprompt') do
-  mode 0755
-  source 'https://github.com/djl/vcprompt/raw/master/bin/vcprompt'
+package "zsh" do
+  action :install
 end
 
-home_directory '.zsh'
-
-zsh_files_dir = Helper.home('.zsh')
-
-git "#{zsh_files_dir}/zsh-syntax-highlighting" do
-  repository 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
-  reference 'master'
-  action :sync
-end
-
-zsh_file 'zsh-syntax-highlighting'
-
-zsh_file 'prompt'
-
-zsh_file 'aliases'
-
-user_cookbook_file '.zshrc'
-
-bash 'make ZSH the default login shell' do
-  code "sudo chsh -s `which zsh` #{Helper.user}"
+case node['platform_family']
+when "debian"
+  package "zsh-doc" do
+    action :install
+  end
+when "rhel", "fedora"
+  package "zsh-html" do
+    action :install
+  end
 end

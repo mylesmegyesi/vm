@@ -1,0 +1,9 @@
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'build-essential', '1.4.0'
+cookbook 'chruby',          git: 'https://github.com/mylesmegyesi/chef-chruby', ref: 'patch-1'
+cookbook 'git',             '2.6.0'
+cookbook 'mysql',           '3.0.4'
+cookbook 'ruby_build',      '0.8.0'
+cookbook 'tmux',            '1.3.2'
+cookbook 'zsh',             '1.0.0'

@@ -1,51 +1,31 @@
-# vi: set ft=ruby :
+Vagrant.configure('2') do |config|
 
-Vagrant::Config.run do |config|
-  config.vm.box = 'development-vm'
+  config.vm.define('dev-vm') do |dev_vm|
 
-  config.vm.forward_port 8080, 8080
-  config.vm.forward_port 8081, 8081
-  config.vm.forward_port 4000, 4000
-  config.vm.forward_port 15672, 15672
+    dev_vm.vm.network 'forwarded_port', guest: 8080, host: 8080
+    dev_vm.vm.network 'forwarded_port', guest: 8081, host: 8081
+    dev_vm.vm.network 'forwarded_port', guest: 22,   host: 2223
+    dev_vm.vm.synced_folder ".", "/vagrant", disabled: true
 
-  config.ssh.forward_agent = true
+    dev_vm.ssh.forward_agent = true
+    dev_vm.ssh.keep_alive    = true
+    dev_vm.ssh.username      = 'mylesmegyesi'
 
-  config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = 'cookbooks'
-    chef.add_recipe('helper::setup')
+    dev_vm.vm.provider 'vmware_fusion' do |v, override|
+      override.vm.box   = 'ubuntu-13.10.amd64.vmware'
+      v.vmx['memsize']  = '8192'
+      v.vmx['numvcpus'] = '4'
+    end
 
-    # Dev Tools
-    chef.add_recipe('git')
-    chef.add_recipe('zsh')
-    chef.add_recipe('vim')
-    chef.add_recipe('tmux')
-    chef.add_recipe('ack')
+    dev_vm.librarian_chef.cheffile_dir = '.'
+    dev_vm.vm.provision :chef_solo do |chef|
 
-    # Languages
-    chef.add_recipe('ruby')
-    chef.add_recipe('java')
-    chef.add_recipe('clojure')
-    chef.add_recipe('node')
-    chef.add_recipe('coffee_script')
-    chef.add_recipe('go')
-    chef.add_recipe('haskell')
+      chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
+      chef.roles_path     = 'roles'
+      chef.add_role('dev_vm')
 
-    # Datastores
-    chef.add_recipe('redis')
-    chef.add_recipe('riak')
-    chef.add_recipe('mongodb')
-    chef.add_recipe('postgres')
-    chef.add_recipe('mysql')
-    chef.add_recipe('sqlite')
-    chef.add_recipe('rabbitmq')
+    end
 
-    # Search Engines
-    chef.add_recipe('elasticsearch')
-
-    # Headless browsers
-    chef.add_recipe('xvfb')
-    chef.add_recipe('phantomjs')
-
-    chef.add_recipe('helper::cleanup')
   end
+
 end
