@@ -17,6 +17,7 @@ run_list [
   'recipe[vim_nox]',
   'recipe[dotfiles]',
   'recipe[clojure]',
+  'recipe[phantomjs]',
 ]
 
 default_attributes({
