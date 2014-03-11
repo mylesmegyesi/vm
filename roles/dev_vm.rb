@@ -9,9 +9,11 @@ run_list [
   'recipe[build-essential]',
   'recipe[mysql::client]',
   'recipe[mysql::server]',
+  'recipe[java]',
   'recipe[git]',
   'recipe[chruby]',
   'recipe[ruby_build]',
+  'recipe[ruby_deps]',
   'recipe[zsh]',
   'recipe[tmux]',
   'recipe[vim_nox]',
@@ -36,6 +38,10 @@ default_attributes({
   :dotfiles => {
     :user_home => USER_HOME,
     :username  => USERNAME
+  },
+  :java => {
+    :install_flavor => 'openjdk',
+    :jdk_version => '7'
   },
   :mysql => {
     :client => {

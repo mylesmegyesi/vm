@@ -3,6 +3,7 @@ Vagrant.configure('2') do |config|
   config.vm.define('dev-vm') do |dev_vm|
 
     dev_vm.vm.network 'forwarded_port', guest: 8080, host: 8080
+    dev_vm.vm.network 'forwarded_port', guest: 3000, host: 3000
     dev_vm.vm.network 'forwarded_port', guest: 8081, host: 8081
     dev_vm.vm.network 'forwarded_port', guest: 22,   host: 2223
     dev_vm.vm.synced_folder ".", "/vagrant", disabled: true
